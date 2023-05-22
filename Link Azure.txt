@@ -1,0 +1,3 @@
+Host: hogwartsuniversity.mysql.database.azure.com
+Username: MargoniFormativa
+Password: @FormativaHogwarts
