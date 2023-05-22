@@ -31,19 +31,19 @@ group by e.eventId) subquery;
 inner join accessrole ar on u.userId = ar.id
 inner join roles r on r.roleId = ar.roleId;
 
-/* i */  select * from eventos 
-where numPartMax != numPartAtual and dateCheckEnd > now();
+/* i */  select * from events 
+where quantityAvailable > 0 and checkInMaxDate > now();
 
-/* j */  select * from eventos 
-where numPartMax = numPartAtual and dateInit > now();
+/* j */  select * from events 
+where quantityAvailable = 0 and startDate > now();
 
-/* k */  select * from eventos 
-where numPartMax != numPartAtual and dateCheckEnd > now();
+/* k */  select * from events 
+where quantityAvailable > 0 and checkInMaxDate > now();
 
-/* l */ select *,count(*) as qnt from users u 
-inner join user_evento ue on u.id_user=ue.id_user_fk 
-where u.dtCadastro between '2023-05-15' and '2023-05-20' 
-group by u.id_user having count(*)>=2;
+/* l */ select u.userId, u.name, count(*) quantidade_checkIn from users u 
+inner join userevent ue on u.userId = ue.userId 
+where u.registerDate between '1999-04-04' and '2005-03-03' 
+group by u.userId having quantidade_checkIn >= 2;
 
 /* PARTE 2 */
 
